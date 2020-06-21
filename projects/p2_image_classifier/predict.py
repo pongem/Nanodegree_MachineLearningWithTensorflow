@@ -9,7 +9,7 @@ import json
 from PIL import Image
 
 # sample usage
-# python predict.py ./test_images/orange_dahlia.jpg best_mode
+# python predict.py ./test_images/orange_dahlia.jpg best_model.h5
 
 # functions
 def process_image(image):
@@ -35,7 +35,7 @@ def predict(image_path, model, top_k):
     top_indices_map = map(lambda x: str(x), top_indices)
     top_probs = first_predict[top_indices]
     top_probs_map = map(lambda x: '{0:.8f}'.format(x), top_probs)
-    top_classes_map = map(lambda x: class_names[str(x)], top_indices)
+    top_classes_map = map(lambda x: class_names[str(x+1)], top_indices)
     return top_probs, list(top_classes_map)
 
 # handling arguments
